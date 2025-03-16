@@ -33,7 +33,10 @@ const connect = async () => {
 */
 const connectDB = async () => {
     try {
-      await mongoose.connect(process.env.MONGODB_URL, {
+      await mongoose.connect(
+        // process.env.MONGODB_URL, 
+        'mongodb+srv://testinglife001:h9jMGbE1h0B1Vrz2@myapptwo.y3ua3.mongodb.net/?retryWrites=true&w=majority&appName=myapptwo',
+      {
         useNewUrlParser: true,
         // useUnifiedTopology: true,
       });
@@ -85,6 +88,10 @@ app.use(express.urlencoded({ limit: "50mb" }));
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+ app.get("/api", (req, res) => {
+   res.json("Hi Hey");
+ }) 
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
